@@ -16,6 +16,7 @@ selected_folder = st.sidebar.selectbox("Select a folder", folders)
 folder_path = os.path.join(folder, selected_folder)
 if os.path.isdir(folder_path):
     image_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('png', 'jpg', 'jpeg', 'gif', 'bmp'))]
+    image_files = sorted(image_files, key=lambda x: int(x.split('_')[2]))
 else:
     image_files = []
 
