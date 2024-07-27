@@ -39,11 +39,11 @@ if image_files:
         image = Image.open(image_path)
 
         cols[0].write(f'GT label: {selected_folder}')
-        mis_class_name = '_'.join(image_file.split('_')[-2:])[:-5]
+        mis_class_name = '_'.join(image_file.split('_')[3:])[:-5]
         cols[1].write(f'Mispredicted label: {mis_class_name}')
         
         # 이미지와 착각한 클래스의 이미지를 각각의 컬럼에 넣어서 출력
         cols[0].image(image, caption=f"Original Image:\n{'_'.join(image_file.split('_')[:3])}.JPEG", use_column_width=True)
-        cols[1].image(mis_image, caption=f"Mispredicted:\n{'_'.join(image_file.split('_')[-2:])[:-5]}", use_column_width=True)
+        cols[1].image(mis_image, caption=f"Mispredicted:\n{'_'.join(image_file.split('_')[3:])[:-5]}", use_column_width=True)
 else:
     st.write("No images found in this folder.")
